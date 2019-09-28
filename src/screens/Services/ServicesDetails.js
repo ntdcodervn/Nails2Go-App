@@ -165,7 +165,7 @@ export default class ServicesDetails extends Component {
               <Text style={services.detailsTitle}>
                 {this.state.nameItem}
               </Text>
-              <Text style={services.detailsPrice}>${item.price}</Text>
+              <Text style={services.detailsPrice}>CHF{item.price}</Text>
               <TouchableOpacity
                 onPress={() => this._addCart(this.state.token, item._id)}
                 style={[

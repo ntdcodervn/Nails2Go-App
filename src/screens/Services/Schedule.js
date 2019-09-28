@@ -275,7 +275,7 @@ export default class Schedule extends Component {
                                 </Text>
                                 <Text style={schedule.time}>{item.begin} - {item.end}</Text>
                                 
-                                <Progress.Bar borderColor='#FFFFFF' progress={item.status} width={barWidth} />
+                                <Progress.Bar borderColor='#FFFFFF'  progress={item.status} width={barWidth} />
                             </LinearGradient>
                         </TouchableOpacity>
                     }

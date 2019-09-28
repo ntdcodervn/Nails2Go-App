@@ -66,7 +66,7 @@ export default class CartScreen extends Component {
       <View style={cart.cartItem}>
         <Text style={cart.itemTitle}>{item.nameService[0].value}</Text>
         <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-          <Text style={cart.price}>${item.price}</Text>
+          <Text style={cart.price}>CHF{item.price}</Text>
           <Text
             style={{
               paddingHorizontal: 15,
@@ -137,10 +137,10 @@ export default class CartScreen extends Component {
                 }}
               >
                 <Text style={[cart.summarytext, { textAlign: "right" }]}>
-                  ${this.state.amountPrice}
+                  CHF{this.state.amountPrice}
                 </Text>
                 <Text style={[cart.summarytext, { textAlign: "right" }]}>
-                  ${this.state.tipPrice}
+                CHF{this.state.tipPrice}
                 </Text>
                 <Text
                   style={[
@@ -148,7 +148,7 @@ export default class CartScreen extends Component {
                     { textAlign: "right", paddingBottom: 0 }
                   ]}
                 >
-                  ${this.state.totalPrice}
+                  CHF{this.state.totalPrice}
                 </Text>
               </View>
             </View>
