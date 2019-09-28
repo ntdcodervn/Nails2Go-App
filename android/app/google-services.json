@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "299315412797",
+    "firebase_url": "https://subeenail.firebaseio.com",
+    "project_id": "subeenail",
+    "storage_bucket": "subeenail.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299315412797:android:59bb5b0ffc2c0bbeb64f54",
+        "android_client_info": {
+          "package_name": "com.nailssalon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299315412797-8e4olfvg74cnbd66skaohqtetrtbhlhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhO9BVXQvpkpiv_a6RASNVK1UPD4kvxKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299315412797-8e4olfvg74cnbd66skaohqtetrtbhlhj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "299315412797-5v083o9lsv0ugveonbje8k2acbdv4uq2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.subee.nailssalon"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

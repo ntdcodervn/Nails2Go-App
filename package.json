@@ -1,0 +1,54 @@
+{
+  "name": "NailsSalon",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "clean": "cd android && ./gradlew clean && cd ..",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "ioslink": "cd ios && pod install && cd ..",
+    "getkey": "keytool -genkey -v -keystore ./android/app/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000"
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
+    "@react-native-community/datetimepicker": "^2.1.0",
+    "axios": "^0.19.0",
+    "i18n-js": "^3.3.0",
+    "moment": "^2.24.0",
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-native-firebase": "^5.5.6",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-image-picker": "^1.1.0",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-localize": "^1.2.0",
+    "react-native-modal-datetime-picker": "^7.6.0",
+    "react-native-progress": "^3.6.0",
+    "react-native-reanimated": "^1.2.0",
+    "react-native-restart": "^0.0.13",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.5",
+    "react-navigation-stack": "^1.8.0",
+    "react-navigation-tabs": "^2.5.3",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.6.0",
+    "@babel/runtime": "7.6.0",
+    "@react-native-community/eslint-config": "0.0.3",
+    "babel-jest": "24.9.0",
+    "eslint": "6.4.0",
+    "jest": "24.9.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-test-renderer": "16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

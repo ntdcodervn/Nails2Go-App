@@ -1,0 +1,53 @@
+export default {
+    home_nav: "Home",
+    services_nav: "ServizioB",
+    booked_nav: "Gebucht",
+    profile_nav: "Profil",
+    greeting_text: "Willkommen bei 'SuBee Nail'",
+    greeting_content: "Verschwenderisch, Freundlicher Nagelservice zu einem erschwinglichen Preis.",
+    greeting_btn: "Beginnt",
+    or: "Oder",
+    hi: "Hallo",
+    signin_title: "Einloggen",
+    email: "E-Mail",
+    password: "Passwort",
+    login: "Einloggen",
+    google_loggin: "Melden Sie sich von Google",
+  
+    signup_title: "Anmelden",
+    firstname: "Vorname",
+    lastname: "Nachname",
+    google_signup: "Anmelden Sie sich von Google",
+  
+    hot_services: "Spezielle Dienstleistungen",
+    watch_more: "Mehr ansehen",
+    ranking_member: "Rangmitglied",
+    point_text: "Punkte",
+    hello: "Hallo",
+    details: "Einzelheiten",
+    
+    book: "Buch",
+    booked: "Gebucht",
+    booking: "Buchung",
+  
+    services_in_cart: "Dienstleistungen im Warenkorb",
+    cart: "Karren",
+    amount: "Quantità",
+    tip: "Betrag",
+    total: "Gesamt",
+    choose_date: "Datum auswählen",
+  
+    history: "Geschichten",
+    point: "Spitze",
+    settings: "Einstellungen",
+    logout: "Ausloggen",
+    cart_is_empty : "Card is empty",
+    language : 'Language',
+    change_password : "Change Password",
+    confirm_password : "Confirm password",
+    new_password : "New password",
+    current_password : "Current password",
+    forgot_password : "Forgot your password?",
+  send_pass : "Send new password"
+  };
+  
