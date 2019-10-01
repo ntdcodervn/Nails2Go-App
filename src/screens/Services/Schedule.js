@@ -268,7 +268,7 @@ export default class Schedule extends Component {
                 <FlatList
                     data={this.state.GridViewItems}
                     renderItem={({ item }) =>
-                        <TouchableOpacity onPress={this.GetGridViewItem.bind(this, item.id,item.slotName)} style={schedule.container}>
+                        <TouchableOpacity onPress={this.GetGridViewItem.bind(this, item.id,item.begin)} style={schedule.container}>
                             <LinearGradient colors={['#FF00A9', '#DC008B']} style={schedule.containerInner} >
                                 <Text style={schedule.slotNum}>
                                     Time

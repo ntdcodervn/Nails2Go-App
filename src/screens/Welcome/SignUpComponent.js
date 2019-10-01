@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView,Alert} from 'react-native';
 import ValidationRules from '../../utils/validateForm';
 import axios from 'axios';
 import {ButtonGradient, AppText, Input} from '../../components';
@@ -67,26 +67,35 @@ export default class SignUpComponent extends Component {
       formToSubmit[key] = formCopy[key].value;
     }
     if (isFormValid) {
-      let response = await this.signupUser(
-        formToSubmit.firstName,
-        formToSubmit.lastName,
-        formToSubmit.email,
-        formToSubmit.password,
-      );
-      console.log(response);
-      if (response.token) {
-        await storeData('token', response.token);
-        this.props.goHome();
+      let response = await axios({
+        url: 'https://nail2go-server.herokuapp.com/api/users/signUp',
+        method: 'POST',
+        data: {
+          firstName: formToSubmit.firstName,
+          lastName: formToSubmit.lastName,
+          email: formToSubmit.email,
+          password: formToSubmit.password,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    
+      console.log(response.data);
+      if (response.data.status == 200) {
+        Alert.alert('Sign Up successful',
+        'Sign Up successfil with email ' + formToSubmit.email,
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],)
       } else {
-        this.setState({
-          hasErrors: true,
-          errorResult: response.errors,
-        });
+        alert(response.data.errors[0].msg)
+        
       }
     } else {
-      this.setState({
-        hasErrors: true,
-      });
+      // this.setState({
+      //   hasErrors: true,
+      // });
     }
   };
   formHasErrors = () => {
