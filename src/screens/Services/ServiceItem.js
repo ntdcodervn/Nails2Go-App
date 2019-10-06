@@ -131,10 +131,17 @@ export default class ServiceItem extends Component {
           </View>
           <View
             style={[services.column, {justifyContent: 'flex-end', flex: 1}]}>
-            <Text
-              style={[services.title, {marginBottom: 10, textAlign: 'right'}]}>
-              CHF{item.price}
-            </Text>
+              <View style={{flex : 1,flexDirection : 'row',justifyContent:'space-between'}}>
+                <Text
+                    style={{fontSize:13,color:'gray'}}>
+                    ({item.time} min)
+                  </Text>
+                  <Text
+                  style={[services.title, {marginBottom: 10, textAlign: 'right'}]}>
+                  CHF{item.price}
+                </Text>
+              </View>
+            
             <TouchableOpacity
               onPress={() => this._addCart(this.state.token, item._id)}
               style={[

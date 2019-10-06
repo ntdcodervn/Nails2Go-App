@@ -22,7 +22,8 @@ export default class ServicesDetails extends Component {
     currentSelect: 0,
     itemSelected: false,
     nameItem :'',
-    description :''
+    description :'',
+    time : 0
   };
 
   async componentDidMount() {
@@ -33,7 +34,9 @@ export default class ServicesDetails extends Component {
       });
       var lang = await AsyncStorage.getItem('@language_key');
       const {item} = this.props.navigation.state.params;
-      console.log(lang);
+      this.setState({
+        time : item.time
+      })
       for(let i= 0; i < item.nameService.length ; i++)
       {
         let element = item.nameService[i];
@@ -122,7 +125,13 @@ export default class ServicesDetails extends Component {
    
     try {
       var data = await addCart(token, idService, url);
-      alert(data.data.msg);
+      if(data.data.msg == 'Add Item successfull')
+      {
+        this.goCart();
+      }
+      else {
+        alert(data.data.msg);
+      }
       var countServices = await getServicesInCart(token);
       console.log(countServices);
       this.setState({
@@ -163,9 +172,11 @@ export default class ServicesDetails extends Component {
             />
             <View style={services.detailsConten}>
               <Text style={services.detailsTitle}>
-                {this.state.nameItem}
+                {this.state.nameItem} ({this.state.time}.min)
               </Text>
+             
               <Text style={services.detailsPrice}>CHF{item.price}</Text>
+              
               <TouchableOpacity
                 onPress={() => this._addCart(this.state.token, item._id)}
                 style={[

@@ -15,7 +15,7 @@ import {BASE_URL_ROUTE, getData} from '../../utils/misc';
 import {home} from '../../constants/theme';
 import {Header, AppText} from '../../components';
 import {getUserInfo, getServices} from '../../utils/api';
-
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
@@ -68,7 +68,29 @@ export default class HomeScreen extends Component {
     const {userInfo, services} = this.state;
     return (
       <SafeAreaView style={home.container}>
-        <Header i18nKey="home_nav" style={{paddingHorizontal: 24}} />
+        <View style={{width : '90%',marginBottom : 20, marginTop : 20,flexDirection:'row',justifyContent:'space-between'}}>
+          <Image
+           style={{
+            height: 40,
+            width: 74,
+          
+           
+          }}
+          // resizeMode="contain"
+          source={require('../../assets/images/logoNail.jpg')}
+          >
+
+          </Image>
+          <View style={{flexDirection : 'row'}}>
+            <View style={{marginRight:10}}>
+              <AppText i18nKey='location'></AppText>
+              <AppText i18nKey='street'></AppText>
+            </View>
+            <Icon size={30} name='location-pin'></Icon>
+          </View>
+         
+         
+        </View>
         {userInfo ? (
           <LinearGradient style={home.userInfo} colors={['#FF00A9', '#FF3D81']}>
             <View style={{paddingVertical: 10}}>

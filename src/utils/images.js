@@ -6,6 +6,7 @@ export const icons = {
   booked: require('../assets/images/booked-icon.png'),
   booked_focused: require('../assets/images/booked-icon-focused.png'),
   profile: require('../assets/images/profile-icon.png'),
+  logo : require('../assets/images/logoNail.jpg'),
   profile_focused: require('../assets/images/profile-icon-focused.png'),
   googleIcon: require('../assets/images/google-icon.png'),
   backIcon: require('../assets/images/back-icon.png'),

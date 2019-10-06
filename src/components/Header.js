@@ -100,10 +100,33 @@ export default class Header extends Component {
         </View>
       </View>
     ) : (
+      <View
+        style={[
+          {
+            flexDirection: 'row',
+            width : '93%',
+            marginTop : 10,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          },
+          headerStyle,
+        ]}>
       <AppText
         style={[styles.header, this.props.style]}
         i18nKey={this.props.i18nKey}
       />
+
+      <Image
+           style={{
+            height: 40,
+            width: 74,
+          
+           
+          }}
+          // resizeMode="contain"
+          source={require('../assets/images/logoNail.jpg')}
+          ></Image>
+        </View>
     );
   }
 }

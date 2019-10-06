@@ -70,7 +70,7 @@ const login = StyleSheet.create({
     fontSize: sizes.h2,
   },
   tabTextActive: {
-    color: colors.hover,
+    color: '#ED152C',
   },
 
   // Form

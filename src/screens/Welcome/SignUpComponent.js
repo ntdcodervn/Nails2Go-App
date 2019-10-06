@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView,Alert} from 'react-native';
+import {View, Text, ScrollView,Alert,Image} from 'react-native';
 import ValidationRules from '../../utils/validateForm';
 import axios from 'axios';
 import {ButtonGradient, AppText, Input} from '../../components';
@@ -200,10 +200,20 @@ export default class SignUpComponent extends Component {
           />
           <ButtonGradient
             onClick={this.submitUser}
-            fcolor="#FF00A9"
-            scolor="#FF3D81"
+            fcolor="#ED152C"
+            scolor="#ED152C"
             i18nKey="signup_title"
           />
+          <View style={{width:'100%',justifyContent:'center',alignItems:'center'}}>
+        <Image
+           style={{
+              marginTop : 40
+           
+          }}
+          // resizeMode="contain"
+          source={require('../../assets/images/logoNail.jpg')}
+          ></Image>
+        </View>
         </ScrollView>
       </React.Fragment>
     );

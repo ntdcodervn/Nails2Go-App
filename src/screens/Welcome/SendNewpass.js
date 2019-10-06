@@ -67,7 +67,7 @@ export default class SendNewPass extends Component {
         </View>
         <TouchableOpacity
         onPress={() => {this._sendNewEmail()}}
-          style={{width : '80%', height :50,backgroundColor : '#FF00A9',borderRadius:5,justifyContent : 'center',alignItems : 'center'}}
+          style={{width : '80%', height :50,backgroundColor : '#ED152C',borderRadius:5,justifyContent : 'center',alignItems : 'center'}}
         >
           <AppText style={{color : '#FFF',fontWeight : 'bold',fontSize : 25}}  i18nKey="send_pass"> </AppText>
         </TouchableOpacity>

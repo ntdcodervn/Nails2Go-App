@@ -26,9 +26,7 @@ import SendNewpass from './../screens/Welcome/SendNewpass'
 
 //Welcome - Login Navigation
 const WelcomeStack = createStackNavigator({
-  WelcomeScreen: {
-    screen: WelcomeScreen,
-  },
+ 
   LoginScreen: {
     screen: LoginScreen,
   },
@@ -44,6 +42,9 @@ const HomeStack = createStackNavigator({
   },
   HotServicesDetails: {
     screen: ServicesDetails,
+  },
+  CartScreen: {
+    screen: CartScreen,
   },
 });
 

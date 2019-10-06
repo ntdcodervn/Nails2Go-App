@@ -48,6 +48,8 @@ export default {
     new_password : "New password",
     current_password : "Current password",
     forgot_password : "Forgot your password?",
-  send_pass : "Send new password"
+  send_pass : "Send new password",
+  location : "Location: Directly at the Stauffacher",
+  street : "Glasmalergasse 6, 8004 Zurich"
   };
   

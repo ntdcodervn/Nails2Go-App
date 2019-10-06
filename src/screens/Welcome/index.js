@@ -24,7 +24,7 @@ export default class WelcomeScreen extends Component {
         <AppText style={theme.welcome.firstText} i18nKey="greeting_content" />
         <ButtonGradient
           i18nKey="greeting_btn"
-          fcolor="#FF00A9"
+          fcolor="#ED152C"
           scolor="#FF3D81"
           onClick={this.goLogin}
         />

@@ -47,6 +47,8 @@ export default {
     new_password : "Mật khẩu mới",
     current_password : "Mật khẩu hiện tại",
     forgot_password : "Forgot your password?",
-    send_pass : "Send new password"
+    send_pass : "Send new password",
+    location : "Location: Directly at the Stauffacher",
+    street : "Glasmalergasse 6, 8004 Zurich"
   };
   
