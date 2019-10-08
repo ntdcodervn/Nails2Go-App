@@ -9,13 +9,17 @@ import {
   TouchableOpacity,
   FlatList,
   ToastAndroid,
+  StyleSheet
 } from 'react-native';
+import MapView,{ Marker } from 'react-native-maps';
 import LinearGradient from 'react-native-linear-gradient';
 import {BASE_URL_ROUTE, getData} from '../../utils/misc';
 import {home} from '../../constants/theme';
 import {Header, AppText} from '../../components';
 import {getUserInfo, getServices} from '../../utils/api';
-import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import IconEn from 'react-native-vector-icons/Entypo'
+
 export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
@@ -71,8 +75,8 @@ export default class HomeScreen extends Component {
         <View style={{width : '90%',marginBottom : 20, marginTop : 20,flexDirection:'row',justifyContent:'space-between'}}>
           <Image
            style={{
-            height: 40,
-            width: 74,
+            height: 50,
+            width: 55,
           
            
           }}
@@ -83,8 +87,8 @@ export default class HomeScreen extends Component {
           </Image>
           <View style={{flexDirection : 'row'}}>
             <View style={{marginRight:10}}>
-              <AppText i18nKey='location'></AppText>
-              <AppText i18nKey='street'></AppText>
+              <AppText i18nKey='location' style={{fontSize : 12}}></AppText>
+              <AppText i18nKey='street' style={{fontSize : 12}}></AppText>
             </View>
             <Icon size={30} name='location-pin'></Icon>
           </View>
@@ -92,7 +96,7 @@ export default class HomeScreen extends Component {
          
         </View>
         {userInfo ? (
-          <LinearGradient style={home.userInfo} colors={['#FF00A9', '#FF3D81']}>
+          <LinearGradient style={home.userInfo} colors={['#ED152C', '#f44336']}>
             <View style={{paddingVertical: 10}}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={home.userName}>
@@ -145,8 +149,53 @@ export default class HomeScreen extends Component {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item, index}) => this.renderHotItems(item, index)}
           />
+         
+          <View style={{flexDirection:'row', marginLeft: 30, marginBottom : 20, marginTop:20}}>
+                  <IconEn color={'#54414A'} name='location' size={25}></IconEn>
+                  <AppText style={{fontSize : 17, marginLeft : 5, fontWeight:'bold',color:'#54414A'}} i18nKey='our_location'></AppText>
+                 
+               </View>
+             <View style={{width: '100%', justifyContent:'center',alignItems:'center', marginBottom: 20}} >
+               
+              <View style={{width : '90%', borderRadius : 20, overflow : 'hidden'}}>
+                <MapView
+                style={styles.map}
+                region={{
+                  latitude: 47.3743563,
+                  longitude: 8.5301422,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+              >
+                <Marker
+                  coordinate={{
+                    latitude: 47.3743563,
+                  longitude: 8.5301422,
+                  }}
+                  title={'MyNails2Go'}
+                  description={'tel : +41 76 463 37 38'}
+                  
+                  
+                  
+                >
+                    <Image source={require('../../assets/images/locationNail.png')} style={{width:58,height:85}} ></Image>
+                  </Marker>
+              </MapView>
+            </View>
+             </View>
+
         </ScrollView>
       </SafeAreaView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  
+  map: {
+    width : '100%',
+    height : 300,
+    
+   
+  },
+});

@@ -10,7 +10,7 @@ export const sizes = {
 };
 
 export const colors = {
-  primary: '#FF00A9',
+  primary: '#ED152C',
   hover: '#DC008B',
   heading: '#340021',
   text: '#54414A',
@@ -62,7 +62,7 @@ const login = StyleSheet.create({
     paddingVertical: 10,
   },
   tabLayoutActive: {
-    borderBottomColor: colors.hover,
+    borderBottomColor: '#ED152C',
   },
   tabText: {
     color: colors.secondary_text,
@@ -380,7 +380,7 @@ export const profile = StyleSheet.create({
     fontSize: sizes.h3,
   },
   content: {
-    color: '#FF00A9',
+    color: '#ED152C',
     fontSize: sizes.h1,
     fontFamily: fonts.bold,
     marginBottom: 5,

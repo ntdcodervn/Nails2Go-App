@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, Image} from 'react-native';
+import {Text, View, TouchableHighlight,TouchableOpacity, Image} from 'react-native';
 
 import {AppText} from '../../components';
 import {services} from '../../constants/theme';
@@ -94,7 +94,7 @@ export default class ServiceItem extends Component {
     const {itemSelected} = this.state;
     const {item} = this.props;
     return (
-      <TouchableOpacity onPress={() => this.props.onClick(item)}>
+      <TouchableHighlight underlayColor="white" onPress={() => this.props.onClick(item)}>
         <View style={services.listItem}>
           <View
             style={[
@@ -158,7 +158,7 @@ export default class ServiceItem extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   }
 }

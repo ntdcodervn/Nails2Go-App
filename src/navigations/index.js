@@ -130,7 +130,7 @@ const BottomNav = createBottomTabNavigator(
     }),
     tabBarOptions: {
       initialRouteName: 'Home',
-      activeTintColor: theme.colors.hover,
+      activeTintColor: '#ED152C',
       inactiveTintColor: theme.colors.secondary_text,
     },
   },

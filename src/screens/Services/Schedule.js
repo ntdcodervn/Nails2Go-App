@@ -10,7 +10,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage'
 import DateTimePicker from "react-native-modal-datetime-picker";
 import Icon from 'react-native-vector-icons/FontAwesome'
-
+import moment from 'moment'
 import { getServicesInCart } from "../../utils/api";
 const socket = io(BASE_URL_ROUTE);
 export default class Schedule extends Component {
@@ -53,7 +53,8 @@ export default class Schedule extends Component {
             ],
             progress: 1,
             isDateTimePickerVisible: false,
-            date : ''
+            date : '',
+            dateShow : ''
         }
     }
 
@@ -69,9 +70,10 @@ export default class Schedule extends Component {
         let d = new Date(date);
         let dateNew = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
          this.setState({
-            date : dateNew
+            date : dateNew,
+            dateShow : d
             })
-        console.log("A date has been picked: ", dateNew);
+        console.log("A date has been picked: ", d);
        this._getListDataSlot(dateNew);
         
        
@@ -227,7 +229,7 @@ export default class Schedule extends Component {
         }
         else{
             return( <View style={{flex : 1,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                <Icon name="calendar" style={{color : '#54414A',marginRight:10}} size={20}></Icon><Text style={{textAlign : 'center'}}>{this.state.date}</Text>
+                <Icon name="calendar" style={{color : '#54414A',marginRight:10}} size={20}></Icon><Text style={{textAlign : 'center'}}>{moment(new Date(this.state.dateShow)).format('MMMM Do YYYY')}</Text>
             </View>)
         }
     }
@@ -252,8 +254,9 @@ export default class Schedule extends Component {
                     style={{ textAlign: "center" }}
                 />
                
-                    <ButtonGradient fcolor="#FF00A9"
-                    scolor="#FF3D81"
+                    <ButtonGradient 
+                    fcolor={"#ED152C"} 
+                    scolor={"#f44336"}
                     i18nKey="choose_date" 
                     onClick={this.showDateTimePicker} 
                     style={{width : "50%",borderRadius : 0}}
@@ -269,7 +272,7 @@ export default class Schedule extends Component {
                     data={this.state.GridViewItems}
                     renderItem={({ item }) =>
                         <TouchableOpacity onPress={this.GetGridViewItem.bind(this, item.id,item.begin)} style={schedule.container}>
-                            <LinearGradient colors={['#FF00A9', '#DC008B']} style={schedule.containerInner} >
+                            <LinearGradient colors={['#ED152C', '#f44336']} style={schedule.containerInner} >
                                 <Text style={schedule.slotNum}>
                                     Time
                                 </Text>

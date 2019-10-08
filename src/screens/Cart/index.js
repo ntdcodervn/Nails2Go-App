@@ -153,8 +153,8 @@ export default class CartScreen extends Component {
           ) : null}
           {booking && this.state.cartList.length > 0 ? (
             <ButtonGradient
-              fcolor={"#FF00A9"}
-              scolor={"#FF3D81"}
+              fcolor={"#ED152C"} 
+              scolor={"#f44336"}
               onClick={this.goSchedule}
               i18nKey="book"
             />

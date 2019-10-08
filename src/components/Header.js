@@ -118,8 +118,8 @@ export default class Header extends Component {
 
       <Image
            style={{
-            height: 40,
-            width: 74,
+            height: 50,
+            width: 55,
           
            
           }}

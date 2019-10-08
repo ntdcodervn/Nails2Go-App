@@ -207,8 +207,9 @@ export default class SignUpComponent extends Component {
           <View style={{width:'100%',justifyContent:'center',alignItems:'center'}}>
         <Image
            style={{
-              marginTop : 40
-           
+              marginTop : 40,
+              width : 172,
+              height : 172
           }}
           // resizeMode="contain"
           source={require('../../assets/images/logoNail.jpg')}
