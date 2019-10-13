@@ -19,7 +19,7 @@ export default class Schedule extends Component {
     };
 
     componentDidMount = async () => {
-        
+        this._getListDataSlot('00-00-0000');
         socket.on('changeSlotRealTime',(data)=> {
             this.setState({
                 GridViewItems : data.map((value,index) => {
@@ -100,7 +100,9 @@ export default class Schedule extends Component {
                 };
                 return item;
                 
-            })
+            }),
+
+            dateShow : getAllSlot.data.date
         })
       }
 
@@ -221,7 +223,7 @@ export default class Schedule extends Component {
     };
 
     _renderDate = () => {
-        if(this.state.date === '' || this.state.date === null)
+        if(this.state.dateShow === '' || this.state.dateShow === null)
         {
             return( <View style={{}}>
                 <Text style={{textAlign : 'center'}}>Please choose day book</Text>
@@ -230,6 +232,7 @@ export default class Schedule extends Component {
         else{
             return( <View style={{flex : 1,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                 <Icon name="calendar" style={{color : '#54414A',marginRight:10}} size={20}></Icon><Text style={{textAlign : 'center'}}>{moment(new Date(this.state.dateShow)).format('MMMM Do YYYY')}</Text>
+                {this.state.GridViewItems.length == 0 ? <Text style={{marginLeft : 5}}>(Close in sunday)</Text> : ''}
             </View>)
         }
     }
@@ -254,21 +257,11 @@ export default class Schedule extends Component {
                     style={{ textAlign: "center" }}
                 />
                
-                    <ButtonGradient 
-                    fcolor={"#ED152C"} 
-                    scolor={"#f44336"}
-                    i18nKey="choose_date" 
-                    onClick={this.showDateTimePicker} 
-                    style={{width : "50%",borderRadius : 0}}
-                    />
+                    
                   
                     {this. _renderDate()}
-                  <DateTimePicker
-                    isVisible={this.state.isDateTimePickerVisible}
-                    onConfirm={this.handleDatePicked}
-                    onCancel={this.hideDateTimePicker}
-                    />
-                <FlatList
+
+                 <FlatList
                     data={this.state.GridViewItems}
                     renderItem={({ item }) =>
                         <TouchableOpacity onPress={this.GetGridViewItem.bind(this, item.id,item.begin)} style={schedule.container}>
@@ -283,7 +276,8 @@ export default class Schedule extends Component {
                         </TouchableOpacity>
                     }
                     numColumns={2}
-                />
+                    />
+                
                
                 
 

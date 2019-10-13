@@ -24,13 +24,9 @@
     <!-- Background Messages (Optional) -->
 
     <service android:name="io.invertase.firebase.messaging.RNFirebaseBackgroundMessagingService" />
-  </application>
-
-  <application>
-    <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
-    <meta-data
+  <meta-data
       android:name="com.google.android.geo.API_KEY"
       android:value="AIzaSyBEbGHWTs3A4ovrnFj8XISRgk-1IhR-2dc"/>
-</application>
+  </application>
 
 </manifest>

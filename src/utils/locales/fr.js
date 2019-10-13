@@ -40,16 +40,17 @@ export default {
     point: "Point",
     settings: "Paramètre",
     logout: "Déconnecter",
-    cart_is_empty : "Card is empty",
-    language : 'Language',
-    change_password : "Change Password",
-    confirm_password : "Confirm password",
-    new_password : "New password",
-    current_password : "Current password",
-    forgot_password : "Forgot your password?",
-  send_pass : "Send new password",
-  location : "Location: Directly at the Stauffacher",
+    cart_is_empty : "La carte est vide",
+    language : 'La langue',
+    change_password : "Changer le mot de passe",
+    confirm_password : "Confirmez le mot de passe",
+    new_password : "Nouveau mot de passe",
+    current_password : "Mot de passe actuel",
+    forgot_password : "Mot de passe oublié?",
+  send_pass : "Envoyer un nouveau mot de passe",
+  location : "Lieu: directement au Stauffacher",
   street : "Glasmalergasse 6, 8004 Zurich",
-  our_location : "Our location"
+  our_location : "Notre emplacement",
+  discount : "Remise"
   };
   

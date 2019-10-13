@@ -41,16 +41,17 @@ export default {
     point: "Spitze",
     settings: "Einstellungen",
     logout: "Ausloggen",
-    cart_is_empty : "Card is empty",
-    language : 'Language',
-    change_password : "Change Password",
-    confirm_password : "Confirm password",
-    new_password : "New password",
-    current_password : "Current password",
-    forgot_password : "Forgot your password?",
-  send_pass : "Send new password",
-  location : "Location: Directly at the Stauffacher",
+    cart_is_empty : "Die Karte ist leer",
+    language : 'Sprache',
+    change_password : "Passwort ändern",
+    confirm_password : "Passwort bestätigen",
+    new_password : "Neues Passwort",
+    current_password : "Aktuelles Passwort",
+    forgot_password : "Passwort vergessen?",
+  send_pass : "Senden Sie ein neues Passwort",
+  location : "Lage: Direkt am Stauffacher",
   street : "Glasmalergasse 6, 8004 Zurich",
-  our_location : "Our location"
+  our_location : "Unsere position",
+  discount : "Rabatt"
   };
   

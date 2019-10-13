@@ -24,7 +24,7 @@ export default {
     ranking_member: "Ranking Member",
     point_text: "Điểm",
     hello: "Xin chào",
-    details: "Details",
+    details: "Chi tiết",
     book: "Đặt Lịch",
     booked: "Lịch đã đặt",
     booking: "Đặt lịch", 
@@ -46,10 +46,11 @@ export default {
     confirm_password : "Nhập lại mật khẩu",
     new_password : "Mật khẩu mới",
     current_password : "Mật khẩu hiện tại",
-    forgot_password : "Forgot your password?",
-    send_pass : "Send new password",
-    location : "Location: Directly at the Stauffacher",
+    forgot_password : "Bạn quên mật khẩu?",
+    send_pass : "Gửi mật khẩu mới",
+    location : "Địa chỉ: tại Stauffacher",
     street : "Glasmalergasse 6, 8004 Zurich",
-    our_location : "Our location"
+    our_location : "Vị trí của chúng tôi",
+    discount : "Giảm giá"
   };
   

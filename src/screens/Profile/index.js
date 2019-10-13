@@ -409,8 +409,8 @@ export default class ProfileScreen extends Component {
                 <AppText i18nKey="point" style={profile.Infotitle}></AppText>
               </View>
               <View style={profile.booked}>
-                <Text style={profile.content}>{this.state.booked}</Text>
-                <AppText i18nKey="booked" style={profile.Infotitle}></AppText>
+                <Text style={profile.content}>{this.state.data.coupons}%</Text>
+                <AppText i18nKey="discount" style={profile.Infotitle}></AppText>
               </View>
             </View>
             <View style={profile.subFunction}>
