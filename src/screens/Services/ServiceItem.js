@@ -26,7 +26,7 @@ export default class ServiceItem extends Component {
       {
         let element = this.props.item.nameService[i];
        
-        if(element.lang == lang)
+        if(element.lang == lang && element.value != '')
         {
           console.log(element.value);
           this.setState({
@@ -44,7 +44,7 @@ export default class ServiceItem extends Component {
       for(let i= 0; i < this.props.item.description.length ; i++)
       {
         let element = this.props.item.description[i];
-        if(element.lang == lang)
+        if(element.lang == lang && element.value != '')
         {
           console.log(element.value);
           this.setState({
@@ -127,20 +127,21 @@ export default class ServiceItem extends Component {
                   ? this.state.description.substring(0, 30) + '...'
                   : this.state.description}
               </Text>
+              <Text
+                    style={services.description}>
+                    Time : {item.timeMake}
+                  </Text>
             </View>
           </View>
           <View
             style={[services.column, {justifyContent: 'flex-end', flex: 1}]}>
-              <View style={{flex : 1,flexDirection : 'row',justifyContent:'space-between'}}>
-                <Text
-                    style={{fontSize:13,color:'gray'}}>
-                    ({item.time} min)
-                  </Text>
+             
+                
                   <Text
                   style={[services.title, {marginBottom: 10, textAlign: 'right'}]}>
                   CHF{item.price}
                 </Text>
-              </View>
+              
             
             <TouchableOpacity
               onPress={() => this._addCart(this.state.token, item._id)}

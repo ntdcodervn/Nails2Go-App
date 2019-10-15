@@ -20,6 +20,7 @@ export default class Schedule extends Component {
 
     componentDidMount = async () => {
         this._getListDataSlot('00-00-0000');
+        console.log(this.state.GridViewItems);
         socket.on('changeSlotRealTime',(data)=> {
             this.setState({
                 GridViewItems : data.map((value,index) => {
@@ -87,7 +88,7 @@ export default class Schedule extends Component {
                 "x-auth-token" : token
             },
         })
-        console.log(getAllSlot);
+       
       
         this.setState({
             GridViewItems : getAllSlot.data.data.map((value,index) => {
@@ -104,6 +105,8 @@ export default class Schedule extends Component {
 
             dateShow : getAllSlot.data.date
         })
+
+        console.log(this.state.GridViewItems);
       }
 
     _cutTime(time) {
@@ -169,7 +172,7 @@ export default class Schedule extends Component {
                 [
                     {
                         text: 'OK',
-                        onPress: () => {this._booking(item)}
+                        onPress: () => {this._booking(item.id)}
 
                     },
                     { text: 'Cancel', onPress: () => console.log('Cancel Pressed') },
@@ -192,6 +195,7 @@ export default class Schedule extends Component {
             alert("You have not choise the service");
         }
         else {
+           
         let booking =  await axios({
             url: `${BASE_URL_ROUTE}api/booking/booking`,
             method: 'POST',
@@ -226,13 +230,13 @@ export default class Schedule extends Component {
         if(this.state.dateShow === '' || this.state.dateShow === null)
         {
             return( <View style={{}}>
-                <Text style={{textAlign : 'center'}}>Please choose day book</Text>
+                <Text style={{textAlign : 'center'}}>Please wait ...</Text>
             </View>)
         }
         else{
             return( <View style={{flex : 1,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                 <Icon name="calendar" style={{color : '#54414A',marginRight:10}} size={20}></Icon><Text style={{textAlign : 'center'}}>{moment(new Date(this.state.dateShow)).format('MMMM Do YYYY')}</Text>
-                {this.state.GridViewItems.length == 0 ? <Text style={{marginLeft : 5}}>(Close in sunday)</Text> : ''}
+                
             </View>)
         }
     }
@@ -264,7 +268,7 @@ export default class Schedule extends Component {
                  <FlatList
                     data={this.state.GridViewItems}
                     renderItem={({ item }) =>
-                        <TouchableOpacity onPress={this.GetGridViewItem.bind(this, item.id,item.begin)} style={schedule.container}>
+                        <TouchableOpacity onPress={this.GetGridViewItem.bind(this, item,item.begin)} style={schedule.container}>
                             <LinearGradient colors={['#ED152C', '#f44336']} style={schedule.containerInner} >
                                 <Text style={schedule.slotNum}>
                                     Time

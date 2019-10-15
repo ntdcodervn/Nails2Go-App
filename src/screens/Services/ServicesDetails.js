@@ -35,13 +35,13 @@ export default class ServicesDetails extends Component {
       var lang = await AsyncStorage.getItem('@language_key');
       const {item} = this.props.navigation.state.params;
       this.setState({
-        time : item.time
+        time : item.timeMake
       })
       for(let i= 0; i < item.nameService.length ; i++)
       {
         let element = item.nameService[i];
        
-        if(element.lang == lang)
+        if(element.lang == lang && element.value != '')
         {
           console.log(element.value);
           this.setState({
@@ -59,7 +59,7 @@ export default class ServicesDetails extends Component {
       for(let i= 0; i < item.description.length ; i++)
       {
         let element = item.description[i];
-        if(element.lang == lang)
+        if(element.lang == lang && element.value != '')
         {
           console.log(element.value);
           this.setState({
@@ -172,7 +172,7 @@ export default class ServicesDetails extends Component {
             />
             <View style={services.detailsConten}>
               <Text style={services.detailsTitle}>
-                {this.state.nameItem} ({this.state.time}.min)
+                {this.state.nameItem} {this.state.time}
               </Text>
              
               <Text style={services.detailsPrice}>CHF{item.price}</Text>

@@ -5,6 +5,7 @@ import {services} from '../../constants/theme';
 import {getData} from '../../utils/misc';
 import ServiceItem from './ServiceItem';
 import {getServicesInCart, getServices} from '../../utils/api';
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 
@@ -25,13 +26,25 @@ export default class ServicesScreen extends Component {
   async componentDidMount() {
     try {
       const token = await getData('token');
-      var data = await getServices(token);
+      // var data = await getServices(token);
      
-    
+    var servicesLocal = await AsyncStorage.getItem('dataService');
+    if(servicesLocal != null && servicesLocal.length != 0)
+    {
       this.setState({
-        data,
+        data : servicesLocal,
         token,
       });
+    } 
+    else {
+      var services = await getServices(token);
+      this.setState({
+        data : services,
+        token,
+      });
+      var servicesLocal = await AsyncStorage.setItem('dataService',services);
+    }
+      
 
     
     } catch (error) {

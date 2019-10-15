@@ -36,13 +36,12 @@ export default class CartScreen extends Component {
       var amountPrice = servicesInCart.reduce((price, sevice) => {
         return (price += sevice.price);
       }, 0);
-      var tipPrice = 10;
-      var totalPrice = amountPrice + tipPrice;
+  
+      var totalPrice = amountPrice ;
       this.setState({
         cartList: servicesInCart,
         cartPrices: servicesInCart,
-        amountPrice,
-        tipPrice,
+        amountPrice : servicesInCart.length,
         totalPrice
       });
     } catch (error) {}
@@ -137,7 +136,7 @@ export default class CartScreen extends Component {
                 }}
               >
                 <Text style={[cart.summarytext, { textAlign: "right" }]}>
-                  CHF{this.state.amountPrice}
+                  {this.state.amountPrice}
                 </Text>
                 
                 <Text

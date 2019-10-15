@@ -19,6 +19,7 @@ import {Header, AppText} from '../../components';
 import {getUserInfo, getServices} from '../../utils/api';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import IconEn from 'react-native-vector-icons/Entypo'
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -37,16 +38,32 @@ export default class HomeScreen extends Component {
   async componentDidMount() {
     var token = await getData('token');
     var userInfo = await getUserInfo(token);
-    var services = await getServices(token);
-    this.setState({
-      userInfo,
-      services,
-      isLoading: true,
-      token: token,
-    });
+    
+    var servicesLocal = await AsyncStorage.getItem('dataService');
+    if(servicesLocal != null && servicesLocal.length != 0)
+    {
+      this.setState({
+        userInfo,
+        servicesLocal,
+        isLoading: true,
+        token: token,
+      });
+    } 
+    else {
+      var services = await getServices(token);
+      this.setState({
+        userInfo,
+        services,
+        isLoading: true,
+        token: token,
+      });
+      var servicesLocal = await AsyncStorage.setItem('dataService',services);
+    }
+    
   }
   // Render Hot Services
   renderHotItems(item, index) {
+    
     return (
       <TouchableOpacity
         onPress={() =>
