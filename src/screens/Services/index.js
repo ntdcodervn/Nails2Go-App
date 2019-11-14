@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default class ServicesScreen extends Component {
   static navigationOptions = {
     header: null,
-  };
+  }; 
 
   state = {
     token: '',

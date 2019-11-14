@@ -13,6 +13,10 @@ export const icons = {
   backIconWhite: require('../assets/images/back-icon-white.png'),
   editIcon: require('../assets/images/edit.png'),
   saveIcon: require('../assets/images/save.png'),
+  awards: require('../assets/images/awards-icon.png'),
+  awards_focused : require('../assets/images/awards-icon-focus.png'),
+  nail_icon : require('../assets/images/nail-icon.png'),
+  nail_icon_a : require('../assets/images/nail-icon-awards.png'),
 };
 
 export default {

@@ -12,9 +12,9 @@ import HomeScreen from '../screens/Home';
 import ProfileScreen from '../screens/Profile';
 import ServicesScreen from '../screens/Services';
 import ServicesDetails from '../screens/Services/ServicesDetails';
-import WelcomeScreen from '../screens/Welcome';
 import LoginScreen from '../screens/Welcome/Login';
 import ScheduleScreen from '../screens/Services/Schedule';
+import Point from '../screens/Point/index'
 // Import Language
 import I18n from '../utils/i18n';
 //Import Images
@@ -23,6 +23,7 @@ import AuthLoading from '../AuthLoading';
 import ChangeLanguage from '../screens/Profile/ChangeLanguage';
 import ChangePassword from '../screens/Profile/ChangePassword';
 import SendNewpass from './../screens/Welcome/SendNewpass'
+
 
 //Welcome - Login Navigation
 const WelcomeStack = createStackNavigator({
@@ -83,6 +84,12 @@ const ProfileStack = createStackNavigator({
   ChangePassword : ChangePassword
 });
 
+const PointStack = createStackNavigator({
+  PointScreen: {
+    screen : Point
+  }
+})
+
 //Bottom Navigation
 const BottomNav = createBottomTabNavigator(
   {
@@ -110,6 +117,12 @@ const BottomNav = createBottomTabNavigator(
         tabBarLabel: I18n.t('profile_nav'),
       }),
     },
+    Point: {
+      screen: PointStack,
+      navigationOptions: () => ({
+        tabBarLabel: I18n.t('awards_nav'),
+      }),
+    }
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -124,7 +137,9 @@ const BottomNav = createBottomTabNavigator(
           iconImage = focused ? icons.booked_focused : icons.booked;
         } else if (routeName === 'Profile') {
           iconImage = focused ? icons.profile_focused : icons.profile;
-        }
+        }else if (routeName === 'Point') {
+        iconImage = focused ? icons. awards_focused : icons.awards;
+      }
         return <Image source={iconImage} style={{height: 20, width: 20}} />;
       },
     }),

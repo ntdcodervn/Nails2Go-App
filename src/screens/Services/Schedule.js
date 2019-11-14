@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, FlatList, View, Alert, Dimensions, ProgressBarAndroid,SafeAreaView } from 'react-native';
+import { TouchableOpacity, Text, FlatList, View, Alert, Dimensions,SafeAreaView } from 'react-native';
 import { schedule } from "../../constants/theme";
-import { Header, ButtonGradient } from "../../components";
+import { Header } from "../../components";
 import LinearGradient from 'react-native-linear-gradient';
 import * as Progress from 'react-native-progress';
 import io from 'socket.io-client';
 import {BASE_URL_ROUTE} from './../../utils/misc'
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage'
-import DateTimePicker from "react-native-modal-datetime-picker";
 import Icon from 'react-native-vector-icons/FontAwesome'
 import moment from 'moment'
 import { getServicesInCart } from "../../utils/api";
+import ButtonGradient from './../../components/Button/ButtonGradient'
+import DateTimePicker from "react-native-modal-datetime-picker";
+
 const socket = io(BASE_URL_ROUTE);
 export default class Schedule extends Component {
     static navigationOptions = {
@@ -19,7 +21,11 @@ export default class Schedule extends Component {
     };
 
     componentDidMount = async () => {
-        this._getListDataSlot('00-00-0000');
+        let total = await axios.get(`${BASE_URL_ROUTE}api/booking/getTotalSlots`);
+        console.log(total.data.total);
+        this.setState({
+            totalS : total.data.total
+        })
         console.log(this.state.GridViewItems);
         socket.on('changeSlotRealTime',(data)=> {
             this.setState({
@@ -43,6 +49,8 @@ export default class Schedule extends Component {
                 })
             })
         })
+
+       
         
     }
 
@@ -55,7 +63,8 @@ export default class Schedule extends Component {
             progress: 1,
             isDateTimePickerVisible: false,
             date : '',
-            dateShow : ''
+            dateShow : '',
+            totalS : 2
         }
     }
 
@@ -69,13 +78,15 @@ export default class Schedule extends Component {
     
       handleDatePicked = date => {
         let d = new Date(date);
+        console.log(date);
         let dateNew = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
          this.setState({
             date : dateNew,
             dateShow : d
-            })
+        })
+        this._getListDataSlot(dateNew);
         console.log("A date has been picked: ", d);
-       this._getListDataSlot(dateNew);
+     
         
        
         this.hideDateTimePicker();
@@ -88,8 +99,6 @@ export default class Schedule extends Component {
                 "x-auth-token" : token
             },
         })
-       
-      
         this.setState({
             GridViewItems : getAllSlot.data.data.map((value,index) => {
                 let item = {
@@ -102,16 +111,12 @@ export default class Schedule extends Component {
                 return item;
                 
             }),
-
-            dateShow : getAllSlot.data.date
         })
-
-        console.log(this.state.GridViewItems);
       }
 
     _cutTime(time) {
         
-        let TimeEndTotal = (time+2) +  ':00';
+        let TimeEndTotal = (time+1) +  ':00';
         return TimeEndTotal;
     }
 
@@ -144,19 +149,12 @@ export default class Schedule extends Component {
     return x; 
     }
 
-    _status(statuss) {
-        console.log(statuss)
-        if(statuss == 0)
-        {
-            return 0;
-        }
-        else if(statuss == 1)
-        {
-            return 0.5;
-        }
-        else if(statuss == 2) {
-            return 1
-        }
+     _status(statuss) {
+        console.log(statuss + '/' + this.state.totalS);
+       
+       
+        let per = (statuss/this.state.totalS);
+        return per;
     }
 
     
@@ -227,15 +225,16 @@ export default class Schedule extends Component {
     };
 
     _renderDate = () => {
-        if(this.state.dateShow === '' || this.state.dateShow === null)
+        console.log(this.state.dateShow);
+        if(this.state.dateShow === '' || !this.state.dateShow)
         {
-            return( <View style={{}}>
-                <Text style={{textAlign : 'center'}}>Please wait ...</Text>
+            return( <View style={{marginTop : 20, marginBottom : 20}}>
+                <Text style={{textAlign : 'center'}}>Please choose date</Text>
             </View>)
         }
         else{
-            return( <View style={{flex : 1,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                <Icon name="calendar" style={{color : '#54414A',marginRight:10}} size={20}></Icon><Text style={{textAlign : 'center'}}>{moment(new Date(this.state.dateShow)).format('MMMM Do YYYY')}</Text>
+            return( <View style={{flex : 1,flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop : 20, marginBottom : 20}}>
+                <Icon name="calendar" style={{color : '#54414A',marginRight:10}} size={20}></Icon><Text style={{textAlign : 'center'}}>{moment(this.state.dateShow).format('MMMM Do YYYY')}</Text>
                 
             </View>)
         }
@@ -261,7 +260,12 @@ export default class Schedule extends Component {
                     style={{ textAlign: "center" }}
                 />
                
-                    
+               <ButtonGradient
+              fcolor={"#ED152C"} 
+              scolor={"#f44336"}
+              onClick={() => this.showDateTimePicker()}
+              i18nKey="choose_date"
+            />
                   
                     {this. _renderDate()}
 
@@ -281,6 +285,13 @@ export default class Schedule extends Component {
                     }
                     numColumns={2}
                     />
+
+                <DateTimePicker
+                        minimumDate={new Date()}
+                        isVisible={this.state.isDateTimePickerVisible}
+                        onConfirm={this.handleDatePicked}
+                        onCancel={this.hideDateTimePicker}
+                />
                 
                
                 

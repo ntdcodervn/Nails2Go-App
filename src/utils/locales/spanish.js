@@ -52,6 +52,7 @@ export default {
     location : "Ubicación: directamente en el Stauffacher",
   street : "Glasmalergasse 6, 8004 Zurich",
   our_location : "Nuestra ubicación",
-  discount : "Descuento"
+  discount : "Descuento",
+  awards_nav : "Awards"
   };
   

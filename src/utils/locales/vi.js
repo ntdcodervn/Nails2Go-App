@@ -51,6 +51,7 @@ export default {
     location : "Địa chỉ: tại Stauffacher",
     street : "Glasmalergasse 6, 8004 Zurich",
     our_location : "Vị trí của chúng tôi",
-    discount : "Giảm giá"
+    discount : "Giảm giá",
+    awards_nav : "Thưởng"
   };
   

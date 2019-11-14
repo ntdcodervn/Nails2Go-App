@@ -30,6 +30,7 @@ export default class BookedScreen extends Component {
     this.props.navigation.navigate('BookedDetails', {
       booking: false,
       titleHeader: 'details',
+      id: '',
     });
   };
 
@@ -37,10 +38,14 @@ export default class BookedScreen extends Component {
     const token = await getData('token');
     this.getBooked(token, 0);
     socket.on('getBookedRealTime', (data) => {
-      this.setState({
-        bookingList: data.reverse(),
-        isLoading: true,
-      });
+      if(data.id == this.state.id)
+      {
+        this.setState({
+          bookingList: data.listBooked.reverse(),
+          isLoading: true,
+        });
+      }
+
     })
   }
 
@@ -53,10 +58,18 @@ export default class BookedScreen extends Component {
           'Content-Type': 'application/json',
         },
       });
-      console.log(dataz.data);
+      var data = await axios({
+        url: `${BASE_URL_ROUTE}api/users/getDataUser`,
+        headers: {
+          'x-auth-token': token,
+          'Content-Type': 'application/json',
+        },
+      });
+     
       this.setState({
         bookingList: dataz.data.booked.reverse(),
         isLoading: true,
+        id: data.data._id
       });
       console.log(dataz.data.booked);
     } catch (error) {
