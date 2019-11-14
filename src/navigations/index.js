@@ -138,7 +138,7 @@ const BottomNav = createBottomTabNavigator(
         } else if (routeName === 'Profile') {
           iconImage = focused ? icons.profile_focused : icons.profile;
         }else if (routeName === 'Point') {
-        iconImage = focused ? icons. awards_focused : icons.awards;
+        iconImage = focused ? icons.nail_icon_a : icons.nail_icon;
       }
         return <Image source={iconImage} style={{height: 20, width: 20}} />;
       },

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {
   Text,
   View,
@@ -8,14 +7,15 @@ import {
   ScrollView,
   TouchableOpacity,
   FlatList,
-  ToastAndroid,
+  Platform,
+  
   StyleSheet
 } from 'react-native';
 import MapView,{ Marker } from 'react-native-maps';
 import LinearGradient from 'react-native-linear-gradient';
-import {BASE_URL_ROUTE, getData} from '../../utils/misc';
+import {getData} from '../../utils/misc';
 import {home} from '../../constants/theme';
-import {Header, AppText} from '../../components';
+import { AppText} from '../../components';
 import {getUserInfo, getServices} from '../../utils/api';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import IconEn from 'react-native-vector-icons/Entypo'
@@ -38,8 +38,9 @@ export default class HomeScreen extends Component {
   async componentDidMount() {
     var token = await getData('token');
     var userInfo = await getUserInfo(token);
-    
-    var servicesLocal = await AsyncStorage.getItem('dataService');
+    if(Platform.OS == 'android')
+    {
+      var servicesLocal = await AsyncStorage.getItem('dataService');
     if(servicesLocal != null && servicesLocal.length != 0)
     {
       this.setState({
@@ -58,6 +59,16 @@ export default class HomeScreen extends Component {
         token: token,
       });
       var servicesLocal = await AsyncStorage.setItem('dataService',services);
+    }
+    
+    }else {
+      var services = await getServices(token);
+      this.setState({
+        userInfo,
+        services,
+        isLoading: true,
+        token: token,
+      });
     }
     
   }

@@ -93,6 +93,7 @@ export default class ServiceItem extends Component {
   render() {
     const {itemSelected} = this.state;
     const {item} = this.props;
+    
     return (
       <TouchableHighlight underlayColor="white" onPress={() => this.props.onClick(item)}>
         <View style={services.listItem}>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, SafeAreaView, FlatList} from 'react-native';
+import {View, SafeAreaView, FlatList,Platform} from 'react-native';
 import {Header} from '../../components';
 import {services} from '../../constants/theme';
 import {getData} from '../../utils/misc';
@@ -27,23 +27,36 @@ export default class ServicesScreen extends Component {
     try {
       const token = await getData('token');
       // var data = await getServices(token);
+    
+      if(Platform.OS == 'android'){
+        var servicesLocal = await AsyncStorage.getItem('dataService');
+    
+        if(servicesLocal != null && servicesLocal.length != 0)
+        {
+          this.setState({
+            data : servicesLocal,
+            token,
+          });
+        } 
+        else {
+          var services = await getServices(token);
+          console.log(services)
+          this.setState({
+            data : services,
+            token,
+          });
+          var servicesLocal = await AsyncStorage.setItem('dataService',services);
+        }
+      }else {
+        var services = await getServices(token);
+        console.log(services)
+        this.setState({
+          data : services,
+          token,
+        });
+      }
      
-    var servicesLocal = await AsyncStorage.getItem('dataService');
-    if(servicesLocal != null && servicesLocal.length != 0)
-    {
-      this.setState({
-        data : servicesLocal,
-        token,
-      });
-    } 
-    else {
-      var services = await getServices(token);
-      this.setState({
-        data : services,
-        token,
-      });
-      var servicesLocal = await AsyncStorage.setItem('dataService',services);
-    }
+   
       
 
     

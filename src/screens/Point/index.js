@@ -51,38 +51,36 @@ export default class index extends Component {
                                     {
                                         if(item == 8)
                                         {
-                                            return (<TouchableOpacity style={{...schedule.container, marginTop : 10}}>
-                                                <LinearGradient colors={['#ED152C', '#f44336']} style={schedule.containerInner} >
-                                                    <Text style={{...schedule.slotNum, marginTop : 12}}>
-                                                        Coupons 30%
-                                                    </Text>
-                                                    <Text style={{...schedule.time,marginBottom : 20}}>for next time</Text>
-                                                    
-                                                   
-                                                </LinearGradient>
-                                            </TouchableOpacity>)
+                                            return (<View style={{ justifyContent: 'center',
+                                            flex : 1,
+                                            alignItems: 'center',
+                                            padding: 10,
+                                            marginTop :15,
+                                            borderRadius: 8,}}><Image source={icons.nail_icon_a} style={{width : 120,height:120}}></Image>
+                                            <Text style={{fontSize : 20, color : '#ED152C'}}>Give coupons 30%</Text>
+                                            </View>)
                                         }else {
                                             return (<View style={{ justifyContent: 'center',
                                             flex : 1,
                                             alignItems: 'center',
                                             padding: 10,
                                             marginTop :15,
-                                            borderRadius: 8,}}><Image source={icons.nail_icon_a} style={{width : 120,height:120}}></Image></View>)
+                                            borderRadius: 8,}}><Image source={icons.nail_icon_a} style={{width : 120,height:120}}></Image>
+                                            
+                                            </View>)
                                         }
                                     }
                                     else {
                                         if(item == 8 && this.state.coupons == 0)
                                         {
-                                            return (<TouchableOpacity style={schedule.container}>
-                                                <LinearGradient colors={['#bca5af', '#bca5af']} style={schedule.containerInner} >
-                                                    <Text style={{...schedule.slotNum, marginTop : 12}}>
-                                                        Coupons 30%
-                                                    </Text>
-                                                    <Text style={{...schedule.time,marginBottom : 20}}>for next time</Text>
-                                                    
-                                                   
-                                                </LinearGradient>
-                                            </TouchableOpacity>)
+                                            return (<View style={{ justifyContent: 'center',
+                                            flex : 1,
+                                            alignItems: 'center',
+                                            padding: 10,
+                                            marginTop :15,
+                                            borderRadius: 8,}}><Image source={icons.nail_icon} style={{width : 100,height:100}}></Image>
+                                            <Text style={{fontSize : 20,color : "#bca5af"}}>Give coupons 30%</Text>
+                                            </View>)
                                         }
                                         if(item <= this.state.point)
                                         {
@@ -91,7 +89,9 @@ export default class index extends Component {
                                             alignItems: 'center',
                                             padding: 10,
                                             marginTop :15,
-                                            borderRadius: 8,}}><Image source={icons.nail_icon_a} style={{width : 120,height:120}}></Image></View>)
+                                            borderRadius: 8,}}><Image source={icons.nail_icon_a} style={{width : 120,height:120}}></Image>
+                                            
+                                            </View>)
                                         }
                                         else {
                                             return (<View style={{ justifyContent: 'center',
