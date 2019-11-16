@@ -209,7 +209,6 @@ export default class Schedule extends Component {
           if(booking.data.status === 200)
           {
               alert(booking.data.msg);
-             
               this.props.navigation.navigate('ServicesScreen');
           }
           else {
