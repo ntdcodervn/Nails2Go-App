@@ -99,6 +99,7 @@ export default class Schedule extends Component {
                 "x-auth-token" : token
             },
         })
+        console.log(getAllSlot.data);
         this.setState({
             GridViewItems : getAllSlot.data.data.map((value,index) => {
                 let item = {
