@@ -165,11 +165,13 @@ export default class ServicesDetails extends Component {
           <ScrollView
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}>
+            <View style={{width : '100%', height : 200, justifyContent : 'center',alignItems : 'center'}}>
             <Image
-              source={{uri: item.image[this.state.currentSelect]}}
-              style={{height: 193, marginBottom: 15}}
-              resizeMode="cover"
+              source={require('./../../assets/images/logoNail.jpg')}
+              style={{width : 100,height:100,marginBottom: 20}}
+              
             />
+            </View>
             <View style={services.detailsConten}>
               <Text style={services.detailsTitle}>
                 {this.state.nameItem} {this.state.time}

@@ -86,10 +86,10 @@ export default class HomeScreen extends Component {
               width: '100%',
               height: '100%',
             }}
-            source={{uri: item.image[0]}}
+            source={require('./../../assets/images/logoNail2.png')}
           />
           <View style={home.hotTitleBG}>
-            <Text style={home.hotTitle}>{item.nameService[0].value}</Text>
+            <Text style={home.hotTitle}>{item.nameService[1].value}</Text>
           </View>
         </View>
       </TouchableOpacity>

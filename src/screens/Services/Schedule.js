@@ -35,13 +35,28 @@ export default class Schedule extends Component {
                     let dateNew = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
                     if(dateNew === this.state.date)
                     {
-                        let item = {
-                            key : index,
-                            begin :`${value.slotName}:00`,
-                            end : this._cutTime(value.slotName),
-                            status : this._status(value.total),
-                            id : value._id
-                        };
+                        let s = value.slotName - Math.floor(value.slotName);
+                        console.log(s)
+                        let item = {}
+                        if(s != 0)
+                        {
+                             item = {
+                                key : index,
+                                begin :`${Math.floor(value.slotName)}:30`,
+                                end : `${Math.floor(value.slotName) + 1}:00`,
+                                status : this._status(value.total),
+                                id : value._id
+                            };
+                        }else {
+                             item = {
+                                key : index,
+                                begin :`${value.slotName}:00`,
+                                end : `${value.slotName}:30`,
+                                status : this._status(value.total),
+                                id : value._id
+                            };
+                        }
+                        
                         return item;
                     }
                    
@@ -102,14 +117,29 @@ export default class Schedule extends Component {
         console.log(getAllSlot.data);
         this.setState({
             GridViewItems : getAllSlot.data.data.map((value,index) => {
-                let item = {
-                    key : index,
-                    begin : `${value.slotName}:00`,
-                    end : this._cutTime(value.slotName),
-                    status : this._status(value.total),
-                    id : value._id
-                };
-                return item;
+                let s = value.slotName - Math.floor(value.slotName);
+                        console.log(s)
+                        let item = {}
+                        if(s != 0)
+                        {
+                             item = {
+                                key : index,
+                                begin :`${Math.floor(value.slotName)}:30`,
+                                end : `${Math.floor(value.slotName) + 1}:00`,
+                                status : this._status(value.total),
+                                id : value._id
+                            };
+                        }else {
+                             item = {
+                                key : index,
+                                begin :`${value.slotName}:00`,
+                                end : `${value.slotName}:30`,
+                                status : this._status(value.total),
+                                id : value._id
+                            };
+                        }
+                        
+                        return item;
                 
             }),
         })
@@ -292,10 +322,6 @@ export default class Schedule extends Component {
                         onConfirm={this.handleDatePicked}
                         onCancel={this.hideDateTimePicker}
                 />
-                
-               
-                
-
             </SafeAreaView>
         );
     }

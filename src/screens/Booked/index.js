@@ -5,9 +5,10 @@ import {
   SafeAreaView,
   FlatList,
   TouchableOpacity,
-  Alert
+  Alert,
+  ActivityIndicator
 } from 'react-native';
-import {Header, AppText, ButtonGradient} from '../../components';
+import {Header, AppText} from '../../components';
 import axios from 'axios';
 import {booked} from '../../constants/theme';
 import {getData} from '../../utils/misc';
@@ -77,12 +78,35 @@ export default class BookedScreen extends Component {
     }
   };
 
-  renderItem(item) {
+   renderItem(item) {
+    console.log(item)
+    let s = item.slots.slotName - Math.floor(item.slots.slotName);
+    let time = 0;
+    for (var i = 0; i < item.services.length; i++) {
+      
+
+      time += item.services[i].time;
+    }
+
+    let numberSlot = Math.floor(time / 60);
+    let min = time - numberSlot*60;
+
+    let numberSlot2 = Math.floor((time+30) / 60);
+    let min2 = (time+30) - numberSlot2*60;
+
+    console.log(s)
+    let slot = Math.floor(item.slots.slotName);
+    if(s != 0)
+    {
+      slot = `${Math.floor(item.slots.slotName)}:30-${Math.floor(item.slots.slotName)+numberSlot2}:${min2}`
+    }else {
+      slot = `${item.slots.slotName}:00-${Math.floor(item.slots.slotName)+numberSlot}:${min}`
+    }
     return (
       <View style={booked.itemContainer}>
         <View style={booked.datetimeContainers}>
-          <Text style={booked.date}>{moment(item.date).format('MMMM Do YYYY')}</Text>
-          <Text style={booked.time}>Slot {item.slots.slotName}:00</Text>
+          <Text style={booked.date}>{moment(item.slots.date).format('MMMM Do YYYY')}</Text>
+          <Text style={booked.time}>Slot {slot}</Text>
         </View>
         
        
@@ -97,16 +121,31 @@ export default class BookedScreen extends Component {
   _renderStatus = (status,id) => {
       if(status == 0){
         return (
+          <>
+          <Text style={{color: 'blue', marginRight : 5}}>Waitting</Text>
           <TouchableOpacity 
           style={{backgroundColor: '#f44336', padding : 10, borderRadius : 10}} 
           onPress={ () => {this._cancelBooked(id)}}>
               <Text style={{color: '#FFF'}}>Cancel</Text>
           </TouchableOpacity>
+          </>
         )
       }else if(status == 1)
       {
         return (
           <Text>Paid</Text>
+        )
+      }else if(status == 2)
+      {
+        return (
+          <>
+          <Text style={{color : '#249e10', marginRight : 5}}>Confirmed</Text>
+          <TouchableOpacity 
+          style={{backgroundColor: '#f44336', padding : 10, borderRadius : 10}} 
+          onPress={ () => {this._cancelBooked(id)}}>
+              <Text style={{color: '#FFF'}}>Cancel</Text>
+          </TouchableOpacity>
+          </>
         )
       }else {
         return (

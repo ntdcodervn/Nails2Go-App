@@ -3,7 +3,7 @@ import {Text, View, TouchableHighlight,TouchableOpacity, Image} from 'react-nati
 
 import {AppText} from '../../components';
 import {services} from '../../constants/theme';
-
+import {} from './../../assets/images/logoNail.jpg';
 import {getData} from '../../utils/misc';
 import {addCart} from '../../utils/api';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -112,10 +112,10 @@ export default class ServiceItem extends Component {
                 height: 44,
                 marginRight: 10,
                 alignItems: 'center',
-                borderRadius: 40,
+               
               }}
               resizeMode="contain"
-              source={{uri: item.image[0]}}
+              source={require('./../../assets/images/logoNail.jpg')}
             />
             <View style={services.titleBG}>
               <Text style={services.title}>
